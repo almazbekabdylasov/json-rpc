@@ -38,11 +38,11 @@ class SelectController extends Controller
         $select->form_uid = $request->input('form_uid');
         $select->save();
         foreach ($request->get('options') as $value) {
-            $variant = new Option();
-            $variant->value = $value;
-            $variant->select_id = $select->id;
-            $variant->form_uid = $request->input('form_uid');
-            $variant->save();
+            $option = new Option();
+            $option->value = $value;
+            $option->select_id = $select->id;
+            $option->form_uid = $request->input('form_uid');
+            $option->save();
         }
         return response()->json(
             [
