@@ -29,6 +29,7 @@ class FormsProcedure extends Procedure
      */
     public function index(): AnonymousResourceCollection
     {
+        return response()->json('GOOOD');
         return FormsResource::collection(Form::all());
     }
 
