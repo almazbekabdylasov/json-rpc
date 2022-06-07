@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Procedures;
 
-//use App\Http\Resources\AnswerResource;
-//use App\Models\Answer;
 use App\Http\Resources\AnswerResource;
+use App\Http\Resources\AnswerShow;
 use App\Models\Answer;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -40,12 +39,19 @@ class AnswerProcedure extends Procedure
     public function store(Request $request): string
     {
         $data = $request->all();
-
         $answer = new Answer();
         $answer->answers = json_encode($data['answers']);
-        $answer->form_id = $data['form_id'];
+        $answer->form_uid = $data['form_uid'];
         $answer->save();
 
         return 'success';
+    }
+
+    public function show(Request $request)
+    {
+        $answer = Answer::where('form_uid', '=', $request->input('form_uid'))->first();
+//        $test = json_decode($answer->answers);
+//        dd($answer->form->name);
+        return new AnswerShow($answer);
     }
 }

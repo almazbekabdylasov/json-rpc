@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('form_uid')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('form_uid');
             $table->json('answers');
             $table->timestamps();
         });

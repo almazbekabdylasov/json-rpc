@@ -21,4 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::rpc('/v1/forms', [FormsProcedure::class])->name('rpc.forms');
-Route::rpc('/v1/answer', [AnswerProcedure::class])->name('rpc.answer');
+Route::rpc('/v1/answers', [AnswerProcedure::class])->name('rpc.answers');

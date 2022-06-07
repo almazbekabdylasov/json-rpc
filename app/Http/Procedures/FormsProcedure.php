@@ -29,7 +29,6 @@ class FormsProcedure extends Procedure
      */
     public function index(): AnonymousResourceCollection
     {
-//        return response()->json('GOOOD');
         return FormsResource::collection(Form::all());
     }
 
@@ -41,7 +40,6 @@ class FormsProcedure extends Procedure
      */
     public function show(Request $request): FormResource
     {
-
         $form = Form::where('form_uid', '=', $request->input('form_uid'))->first();
         return new FormResource($form);
     }

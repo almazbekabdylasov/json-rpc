@@ -9,6 +9,10 @@ class Answer extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['form_uid', 'answers'];
+
+    protected $table = 'answers';
+
     public function form()
     {
         return $this->hasOne(Form::class, 'form_uid', 'form_uid');

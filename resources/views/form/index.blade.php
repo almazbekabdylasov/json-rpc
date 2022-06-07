@@ -17,6 +17,16 @@
     <p>No forms</p>
 @endforelse
 
-
-<a href="{{route('form.create')}}">Create new form</a>
+<br>
+<br>
+<br>
+<br>
+<a class="btn btn-outline-primary" href="{{route('form.create')}}">Create new form</a>
+<br>
+<br>
+<br>
+<br>
+<div>
+    <a class="btn btn-outline-success" href="{{route('answers')}}">Answers</a>
+</div>
 @endsection

@@ -18,12 +18,11 @@ use App\Http\Controllers\FormController;
 
 Route::get('/', [FormController::class, 'index'])->name('form.index');
 Route::resource('form', FormController::class);
-//Route::get('form/create', [FormController::class, 'create'])->name('form.create');
-//Route::post('form',[FormController::class, 'store'])->name('form.store');
-//Route::get('form',[FormController::class, 'edit'])->name('form.edit');
 Route::resource('input', InputController::class);
 Route::resource('select', SelectController::class);
 Route::resource('textarea', TextareaController::class);
+
+Route::get('/answers', [\App\Http\Controllers\AnswerController::class, 'index'])->name('answers');
 
 Auth::routes();
 
