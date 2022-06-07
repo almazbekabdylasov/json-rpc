@@ -1,15 +1,16 @@
 <template>
-    <h1>Hello</h1>
+  <router-view />
 </template>
 
 <script>
-
-
 export default {
-  name: 'App',
+  data() {
+    return {}
+  },
 }
 </script>
 
-<style>
-
+<style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@300;400;500;700&family=Rubik:wght@400;500;700&display=swap');
+@import '@/assets/scss/index.scss';
 </style>

@@ -1,0 +1,47 @@
+@import './variables.scss';
+@import './mixins';
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+}
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+body {
+  max-width: 730px;
+  margin: 0 auto;
+  background-color: #675afe;
+  font-size: 16px;
+  padding: 20px 10px 60px;
+}
+
+.title {
+  @include font(20px, 700, 1.5, white);
+  text-align: center;
+  margin-bottom: 20px;
+}
