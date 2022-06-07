@@ -25,6 +25,19 @@
 
     </div>
 
+    <div class="border border-4 border-primary">
+        <form method="post" action="{{route('form.update', ['form' => $form])}}">
+            @csrf
+            @method('PUT')
+            <div class="mb-3">
+                <label for="name" class="form-label">Change name your form</label>
+                <input type="text" value="{{$form->name}}" class="form-control" id="name" name="name" aria-describedby="name">
+                <div id="name" class="form-text">Field is required</div>
+            </div>
+            <button type="submit" class="btn btn-outline-primary">Update</button>
+        </form>
+    </div>
+
     <!-- Modal input  edit -->
     <div class="modal fade" id="edit_modal_input" tabindex="-1" aria-labelledby="edit_modal_input" aria-hidden="true">
         <div class="modal-dialog">

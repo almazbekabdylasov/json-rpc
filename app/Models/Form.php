@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Form extends Model
 {
+    protected $table = 'forms';
+    protected $fillable = ['name', 'form_uid'];
     use HasFactory;
 
     public function inputs()
@@ -24,8 +26,8 @@ class Form extends Model
         return $this->hasMany(Select::class,'form_uid', 'form_uid');
     }
 
-    public function answer()
+    public function answers()
     {
-        return $this->hasOne(Answer::class, 'form_uid', 'form_uid');
+        return $this->hasMany(Answer::class, 'form_uid', 'form_uid');
     }
 }

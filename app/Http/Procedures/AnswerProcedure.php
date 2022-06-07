@@ -6,7 +6,9 @@ namespace App\Http\Procedures;
 
 use App\Http\Resources\AnswerResource;
 use App\Http\Resources\AnswerShow;
+use App\Http\Resources\FormShow;
 use App\Models\Answer;
+use App\Models\Form;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Sajya\Server\Procedure;
@@ -49,9 +51,8 @@ class AnswerProcedure extends Procedure
 
     public function show(Request $request)
     {
-        $answer = Answer::where('form_uid', '=', $request->input('form_uid'))->first();
-//        $test = json_decode($answer->answers);
-//        dd($answer->form->name);
-        return new AnswerShow($answer);
+        $form = Form::where('form_uid', '=', $request->input('form_uid'))->first();
+//        $answer = Answer::where('form_uid', '=', $request->input('form_uid'))->first();
+        return new FormShow($form);
     }
 }

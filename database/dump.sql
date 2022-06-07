@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS "forms" ("id" integer not null primary key autoincrement, "form_uid" varchar not null, "name" varchar not null, "created_at" datetime, "updated_at" datetime);
+CREATE TABLE IF NOT EXISTS "inputs" ("id" integer not null primary key autoincrement, "form_uid" integer not null, "name" varchar not null, "type" varchar not null, "description" varchar not null, "created_at" datetime, "updated_at" datetime);
+CREATE TABLE IF NOT EXISTS "textareas" ("id" integer not null primary key autoincrement, "form_uid" integer not null, "name" varchar not null, "description" varchar not null, "created_at" datetime, "updated_at" datetime);
+CREATE TABLE IF NOT EXISTS "selects" ("id" integer not null primary key autoincrement, "form_uid" integer not null, "name" varchar not null, "description" varchar not null, "created_at" datetime, "updated_at" datetime);
+CREATE TABLE IF NOT EXISTS "options" ("id" integer not null primary key autoincrement, "form_uid" integer not null, "select_id" integer not null, "value" varchar not null, "created_at" datetime, "updated_at" datetime);
+CREATE TABLE IF NOT EXISTS "answers" ("id" integer not null primary key autoincrement, "form_uid" integer not null, "answers" text not null, "created_at" datetime, "updated_at" datetime);
+INSERT INTO migrations VALUES(174,'2022_06_04_103409_create_forms_table',2);
+INSERT INTO migrations VALUES(175,'2022_06_04_104721_create_inputs_table',2);
+INSERT INTO migrations VALUES(176,'2022_06_04_104730_create_textareas_table',2);
+INSERT INTO migrations VALUES(177,'2022_06_04_104736_create_selects_table',2);
+INSERT INTO migrations VALUES(178,'2022_06_04_105512_create_options_table',2);
+INSERT INTO migrations VALUES(179,'2022_06_06_173242_create_answers_table',2);

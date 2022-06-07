@@ -17,10 +17,10 @@ use App\Http\Controllers\FormController;
 */
 
 Route::get('/', [FormController::class, 'index'])->name('form.index');
-Route::resource('form', FormController::class);
-Route::resource('input', InputController::class);
-Route::resource('select', SelectController::class);
-Route::resource('textarea', TextareaController::class);
+Route::resource('form', FormController::class)->except(['show']);
+Route::resource('input', InputController::class)->except(['show','create','index']);
+Route::resource('select', SelectController::class)->except(['show', 'create', 'index']);
+Route::resource('textarea', TextareaController::class)->except(['show', 'create', 'index']);
 
 Route::get('/answers', [\App\Http\Controllers\AnswerController::class, 'index'])->name('answers');
 

@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FormRequest;
 use App\Models\Form;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 class FormController extends Controller
@@ -23,7 +22,7 @@ class FormController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(FormRequest $request)
     {
         $form = new Form();
         $form->name = $request->input('name');
@@ -33,16 +32,6 @@ class FormController extends Controller
         return redirect()->route('form.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Form  $form
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Form $form)
-    {
-        //
-    }
 
 
     public function edit(Form $form)
@@ -50,26 +39,18 @@ class FormController extends Controller
         return  view('form.edit', compact('form'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Form  $form
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Form $form)
+
+    public function update(FormRequest $request, Form $form)
     {
-        //
+        $form->name = $request->input('name');
+        $form->save();
+        return redirect()->route('form.edit', compact('form'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Form  $form
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Form $form)
     {
-        //
+        $form->delete();
+        return redirect()->route('form.index');
     }
 }

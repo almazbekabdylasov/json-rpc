@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AnswerShow extends JsonResource
+class FormShow extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,7 +15,8 @@ class AnswerShow extends JsonResource
     public function toArray($request)
     {
         return [
-            'answer' => json_decode($this->answers)
+            'form_name' => $this->name,
+            'answers' => AnswerShow::collection($this->answers)
         ];
     }
 }

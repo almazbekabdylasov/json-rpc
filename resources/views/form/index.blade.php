@@ -11,6 +11,11 @@
     <div class="card-body">
         <h5 class="card-title">{{$form->name}}</h5>
         <a href="{{route('form.edit', ['form' => $form])}}" class="btn btn-primary">Go edit</a>
+        <form action="{{route('form.destroy', ['form' => $form])}}" method="post">
+            @csrf
+            @method('DELETE')
+            <button class="btn btn-danger">Delete</button>
+        </form>
     </div>
 </div>
 @empty
