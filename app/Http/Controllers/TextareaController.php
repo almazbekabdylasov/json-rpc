@@ -63,26 +63,22 @@ class TextareaController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Textarea  $textarea
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Textarea $textarea)
     {
-        //
+        $textarea->name = $request->input('name');
+        $textarea->description = $request->input('description');
+        $textarea->save();
+        return response()->json(
+            [
+                'textarea' => view('textarea.textarea', compact('textarea'))->render()
+            ], 201);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Textarea  $textarea
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Textarea $textarea)
     {
-        //
+        $textarea->delete();
+        return response()->json($textarea);
     }
 }

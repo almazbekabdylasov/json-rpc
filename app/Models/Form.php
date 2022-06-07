@@ -23,4 +23,9 @@ class Form extends Model
     {
         return $this->hasMany(Select::class,'form_uid', 'form_uid');
     }
+
+    public function answer()
+    {
+        return $this->hasOne(Answer::class, 'form_uid', 'form_uid');
+    }
 }

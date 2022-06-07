@@ -72,26 +72,30 @@ class SelectController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Select  $select
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Select $select)
     {
-        //
+        $select->name = $request->input('name');
+        $select->description = $request->input('description');
+        $select->save();
+        $select->options()->delete();
+        foreach ($request->get('options') as $value) {
+            $option = new Option();
+            $option->value = $value;
+            $option->select_id = $select->id;
+            $option->form_uid = $request->input('form_uid');
+            $option->save();
+        }
+        return response()->json(
+            [
+                'select' => view('select.select', compact('select'))->render()
+            ], 201);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Select  $select
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Select $select)
     {
-        //
+        $select->delete();
+        return response()->json($select);
     }
 }
