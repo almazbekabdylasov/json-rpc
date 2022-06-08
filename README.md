@@ -17,8 +17,6 @@ cd database
 
 make file database.sqlite 
 
-cd ..
-
 cp .env.example .env
 
 composer update
