@@ -13,6 +13,11 @@
 ----
 Запустить можно локально:
 
+cd database 
+
+make file database.sqlite 
+
+cd ..
 
 cp .env.example .env
 

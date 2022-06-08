@@ -9,27 +9,12 @@ use Illuminate\Http\Request;
 
 class SelectController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function create()
-    {
-        //
-    }
-
-
     public function store(Request $request)
     {
         $select = new Select();
@@ -50,29 +35,12 @@ class SelectController extends Controller
             ], 201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Select  $select
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Select $select)
-    {
-        //
-    }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Select  $select
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Select $select
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function edit(Select $select)
-    {
-        //
-    }
-
-
     public function update(Request $request, Select $select)
     {
         $select->name = $request->input('name');
@@ -93,6 +61,10 @@ class SelectController extends Controller
     }
 
 
+    /**
+     * @param Select $select
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function destroy(Select $select)
     {
         $select->delete();

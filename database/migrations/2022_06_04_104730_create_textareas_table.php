@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreignId('form_uid');
             $table->string('name');
             $table->string('description');
-//            $table->string('value');
             $table->timestamps();
         });
     }

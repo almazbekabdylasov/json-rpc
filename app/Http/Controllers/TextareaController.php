@@ -2,33 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TextareaRequest;
+use App\Http\Requests\TextareaUpdateRequest;
 use App\Models\Textarea;
 use Illuminate\Http\Request;
 
 class TextareaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param TextareaRequest $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function create()
-    {
-        //
-    }
-
-
-    public function store(Request $request)
+    public function store(TextareaRequest $request)
     {
         $textarea = new Textarea();
         $textarea->name = $request->input('name');
@@ -41,30 +28,13 @@ class TextareaController extends Controller
             ], 201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Textarea  $textarea
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Textarea $textarea)
-    {
-        //
-    }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Textarea  $textarea
-     * @return \Illuminate\Http\Response
+     * @param TextareaUpdateRequest $request
+     * @param Textarea $textarea
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function edit(Textarea $textarea)
-    {
-        //
-    }
-
-
-    public function update(Request $request, Textarea $textarea)
+    public function update(TextareaUpdateRequest $request, Textarea $textarea)
     {
         $textarea->name = $request->input('name');
         $textarea->description = $request->input('description');
@@ -76,6 +46,10 @@ class TextareaController extends Controller
     }
 
 
+    /**
+     * @param Textarea $textarea
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function destroy(Textarea $textarea)
     {
         $textarea->delete();

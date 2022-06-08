@@ -24,6 +24,6 @@ Route::resource('textarea', TextareaController::class)->except(['show', 'create'
 
 Route::get('/answers', [\App\Http\Controllers\AnswerController::class, 'index'])->name('answers');
 
-Auth::routes();
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
