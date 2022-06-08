@@ -52,7 +52,6 @@ class AnswerProcedure extends Procedure
     public function show(Request $request)
     {
         $form = Form::where('form_uid', '=', $request->input('form_uid'))->first();
-//        $answer = Answer::where('form_uid', '=', $request->input('form_uid'))->first();
         return new FormShow($form);
     }
 }
